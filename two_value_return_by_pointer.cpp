@@ -2,20 +2,21 @@
 using namespace std; 
 
 typedef unsigned short USHORT; 
+enum ERR_CODE {SUCCESS, ERROR};
 
-short Factor(USHORT, USHORT*, USHORT*); 
+short Factor(USHORT, USHORT&, USHORT&); 
 
 int main()
 {
 	USHORT number, squared, cubed; 
-	short error; 
+	ERR_CODE result; 
 
 	cout << "Enter a number (0 ~ 20): "; 
 	cin >> number; 
 
-	error = Factor(number, &squared, &cubed); 
+	 result = Factor(number, squared, cubed); 
 
-	if (!error)
+	if (result == SUCCESS)
 	{
 		cout << "number: " << number << endl; 
 		cout << "squared: " << squared << endl; 
@@ -31,19 +32,15 @@ int main()
 
 short Factor(USHORT n, USHORT* pSqured, USHORT* pCubed)
 {
-	short value = 0; 
-
 	if (n > 20)
 	{
-		value = 1; 
+		return ERROR;  
 	}
 	else
 	{
 		*pSqured = n * n; 
 		*pCubed = n * n * n; 
-		value = 0; 
-	}
-
-	return value; 
+		return SUCCESS; 
+	}	
 }
 

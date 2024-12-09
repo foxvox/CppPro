@@ -30,7 +30,7 @@ int main()
 	return 0;
 }
 
-ERR_CODE Factor(USHORT n, USHORT &rSquared, USHORT &rCubed)
+ERR_CODE Factor(USHORT n, USHORT& rSquared, USHORT& rCubed)
 {
 	if (n > 20)
 	{
